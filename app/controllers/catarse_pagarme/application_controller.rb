@@ -45,6 +45,7 @@ module CatarsePagarme
       @contribution ||= PaymentEngines.find_contribution(params[:id])
     end
 
+    #Calls the PaymentEnginess class defined in the CatarseApps in /lib
     def payment
       attributes = {contribution: contribution, value: contribution.value}
       @payment ||= PaymentEngines.new_payment(attributes)

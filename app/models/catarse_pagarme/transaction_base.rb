@@ -12,9 +12,9 @@ module CatarsePagarme
     def change_payment_state
       self.payment.update_attributes(attributes_to_payment)
       self.payment.save!
-      delegator.update_transaction
+      delegator.update_transaction #saves info into transaction. See model payment_delegator.rb
       self.payment.payment_notifications.create(contribution_id: self.payment.contribution_id, extra_data: self.transaction.to_json)
-      delegator.change_status_by_transaction(self.transaction.status)
+      delegator.change_status_by_transaction(self.transaction.status) #updates some payment status info...not clear. See model payment_delegator.rb
     end
 
     def payment_method
