@@ -1,7 +1,7 @@
 module CatarsePagarme
   class CreditCardsController < CatarsePagarme::ApplicationController
 
-    #Creates a new credit card transaction by invoking a new CreditCardTransaction object and passing the credit card attributes as a hash and calling the payment function in the Application Controller. The payment method calls the PaymentEngines class within the Catarse App (lib folder) which creates and returns a payment object.	  
+    #Creates a new credit card transaction by invoking a new CreditCardTransaction object and passing the credit card attributes as a hash and calling the payment function in the Application Controller. The payment method calls the PaymentEngines class within the Catarse App (lib folder) which creates and returns a Payment object and obtains the contribution information.	  
     #The create method is called by the Jquery script Credit_card.js with an Ajax POST.
     def create
       transaction = CreditCardTransaction.new(credit_card_attributes, payment).charge!
